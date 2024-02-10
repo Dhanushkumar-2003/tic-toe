@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
       String path = entit.path;
       if (path.endsWith('.mp3')) _songs.add(entit);
       setState(() {
-        _songs;
+        _songs; //dummy comment
       });
     }
     print(_songs);
