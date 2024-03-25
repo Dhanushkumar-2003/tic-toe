@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+// import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:audioplayers/audioplayers.dart';
 
+// ignore: must_be_immutable
 class New extends StatefulWidget {
   New({super.key, required this.name, required this.path});
   String name;
@@ -51,8 +52,7 @@ class _NewState extends State<New> {
                 child: SizedBox.fromSize(
                   size: Size.fromRadius(146),
                   child: const Center(
-                      child:
-                       Image(
+                      child: Image(
                     height: 400,
                     image: AssetImage('image/m.png'),
                     fit: BoxFit.fitHeight,
@@ -104,13 +104,14 @@ class _NewState extends State<New> {
                     color: Colors.white,
                     size: 54,
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     if (isplay) {
                       isplay = false;
                       plays.pause();
                     } else {
                       isplay = true;
-                      plays.play(UrlSource(widget.path));
+                      var ok = await plays.play(UrlSource(widget.path));
+                      // print("plauy$ok");
                     }
                     setState(() {});
                   },
